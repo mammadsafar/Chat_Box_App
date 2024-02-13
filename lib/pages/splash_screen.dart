@@ -1,19 +1,20 @@
+import 'package:chat_box/pages/register/register.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatelessWidget {
+  static String routeName = '/';
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Image.asset('assets/icons/Logo -uihut.png'),
-        // child: SvgPicture.asset(
-        //   'assets/icons/logo.svg',
-        //   width: 200,
-        //   height: 200,
-        // ),
+      body: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, RegisterPage.routeName);
+        },
+        child: Center(
+          child: Image.asset('assets/icons/Logo -uihut.png'),
+        ),
       ),
     );
   }
