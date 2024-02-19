@@ -1,3 +1,7 @@
+import 'package:chat_box/pages/register/login.dart';
+import 'package:chat_box/pages/register/signup.dart';
+import 'package:chat_box/pages/widgets/divider_or.dart';
+import 'package:chat_box/pages/widgets/sso_login.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:ui' as ui;
@@ -47,8 +51,9 @@ class RegisterPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 45),
+                      // const SizedBox(height: 45),
                       SizedBox(
+                        // padding: const EdgeInsets.only(top: 45),
                         width: size.width * 0.8,
                         child: const Column(
                           children: [
@@ -90,56 +95,35 @@ class RegisterPage extends StatelessWidget {
                     children: [
                       LoginWithWidget(
                         icon: 'assets/icons/Facebook-f_Logo-Blue-Logo.wine.png',
+                        borderColor: Colors.white,
                         onPressed: () {},
                       ),
                       const SizedBox(width: 20),
                       LoginWithWidget(
                         icon: 'assets/icons/Google_Pay-Logo.wine (1).png',
+                        borderColor: Colors.white,
                         onPressed: () {},
                       ),
                       const SizedBox(width: 20),
                       LoginWithWidget(
                         icon: 'assets/icons/Apple_Inc.-Logo.wine (1).png',
+                        borderColor: Colors.white,
                         onPressed: () {},
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
-                  SizedBox(
-                    width: size.width * 0.8,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Divider(
-                            color: const Color(0xFFCDD1D0).withOpacity(0.2),
-                            height: 50,
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "OR",
-                            style: TextStyle(
-                              color: Color(0xFFD6E4E0),
-                              fontFamily: 'circularStd',
-                              fontWeight: FontWeight.w100,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: const Color(0xFFCDD1D0).withOpacity(0.2),
-                            height: 50,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  DividerOrWidget(size: size),
                   const SizedBox(height: 20),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpPage(),
+                        ),
+                      );
+                    },
                     child: Container(
                       width: size.width * 0.9,
                       padding: const EdgeInsets.all(12),
@@ -173,7 +157,14 @@ class RegisterPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 10),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ),
+                          );
+                        },
                         child: const Text(
                           'Log in',
                           style: TextStyle(
@@ -189,37 +180,6 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class LoginWithWidget extends StatelessWidget {
-  final String icon;
-  final VoidCallback? onPressed;
-  const LoginWithWidget({
-    super.key,
-    required this.icon,
-    this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          // color: const Color(0xFF3A3A3A),
-          border: Border.all(
-            color: Colors.white,
-          ),
-        ),
-        child: Center(
-          child: Image.asset(icon),
         ),
       ),
     );
